@@ -11,20 +11,17 @@ datasource db {
 }
 
 model User {
-
-  id              Int    @id @default(autoincrement())
-  name            String @unique
-  posts           Post[]
-  email           String @unique
-  telephoneNumber Int    @unique
+  id    Int     @default(autoincrement()) @id
+  email String  @unique
+  name  String?
+  posts Post[]
 }
 
 model Post {
-
-  PostId    Int      @id @default(autoincrement())
-  PostText  String
-  Banned    Boolean? @default(false)
-  Published Boolean? @default(false)
-  authorID  User     @relation(references: [id], fields: [userId])
-  userId Int
+  id        Int      @default(autoincrement()) @id
+  title     String
+  content   String?
+  published Boolean? @default(false)
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  Int?
 }

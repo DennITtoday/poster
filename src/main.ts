@@ -1,6 +1,6 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
-import {PrismaClient} from '@prisma/client';
+import {PrismaService} from 'src/prisma.service';
 
     async function start() {
 
